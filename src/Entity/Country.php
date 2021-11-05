@@ -9,7 +9,21 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource
+ * @ApiResource(
+ *     formats={"json"},
+ *     itemOperations={
+ *         "get",
+ *         "put",
+ *         "delete",
+ *         "patch",
+ *         "get_country_by_code"={
+ *             "method"="GET",
+ *             "path"="/countries/code/{code}",
+ *             "requirements"={"code"="\d+"},
+ *             "description"="Get country by code"
+ *         }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=CountryRepository::class)
  */
 class Country
@@ -22,7 +36,7 @@ class Country
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=32)
      */
     private $code;
 
