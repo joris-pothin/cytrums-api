@@ -1,7 +1,14 @@
 api_platform:
+    title: 'Cytrums API'
+    version: '0.0.1'
+    show_webby: false
+    enable_profiler: true
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    collection:
+        pagination:
+          enabled: false

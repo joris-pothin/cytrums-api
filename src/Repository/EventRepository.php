@@ -47,4 +47,17 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function test($idParticipant)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('eu.user_id = :user_id')
+            ->andWhere('eu.event_id = :event_id')
+            ->setParameter('user_id', $idParticipant)
+            ->setParameter('event_id', 1)
+            ->join('event_user','eu', 'WITH', 'eu.event_id = e.id')
+            ->join('App\Entity\User','u', 'WITH', 'u.id = eu.user_id')
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

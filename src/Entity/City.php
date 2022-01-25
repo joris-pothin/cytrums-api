@@ -42,6 +42,21 @@ class City
      */
     private $addresses;
 
+    /**
+     * @ORM\Column(type="string", length=6, nullable=true)
+     */
+    private $region;
+
+    /**
+     * @ORM\Column(type="string", length=2, nullable=true)
+     */
+    private $department;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $postcode = [];
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
@@ -114,6 +129,42 @@ class City
                 $address->setCity(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?string $region): self
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    public function getDepartment(): ?string
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(?string $department): self
+    {
+        $this->department = $department;
+
+        return $this;
+    }
+
+    public function getPostcode(): ?array
+    {
+        return $this->postcode;
+    }
+
+    public function setPostcode(?array $postcode): self
+    {
+        $this->postcode = $postcode;
 
         return $this;
     }
