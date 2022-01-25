@@ -15,7 +15,7 @@ class SyncCountriesCommand extends Command
 {
     protected const DEFAULT_FILENAME = 'public/datas/countries.json';
 
-    protected static $defaultName = 'app:sync-countries';
+    protected static $defaultName = 'app:sync:countries';
     protected static $defaultDescription = 'Synchronize countries from json file';
 
     protected CountryRepository $countryRepository;
